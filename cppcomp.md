@@ -74,7 +74,7 @@ int main() {
 
 ---
 
-### 4. `#define log(msg) (std::cout << msg << std::endl)`
+### 4. `#define log(msg)`
 
 **Penjelasan**: Makro ini membuat fungsi logging sederhana yang mencetak pesan ke konsol dengan newline.
 
@@ -99,7 +99,7 @@ Hello, World!
 
 ---
 
-### 5. `#define logError(msg) (std::cerr << msg << std::endl)`
+### 5. `#define logError(msg)`
 
 **Penjelasan**: Mirip dengan `log`, tetapi mengarahkan output ke `std::cerr`, yang sering digunakan untuk mencetak error.
 
@@ -124,7 +124,7 @@ An error occurred!
 
 ---
 
-### 6. `#define throwError(msg) (throw std::runtime_error(msg))`
+### 6. `#define throwError(msg)`
 
 **Penjelasan**: Makro ini digunakan untuk melempar exception dengan pesan tertentu menggunakan `std::runtime_error`.
 
@@ -154,7 +154,7 @@ This is an error!
 
 ---
 
-### 7. `#define assert(condition, msg) if (!(condition)) throwError(msg)`
+### 7. `#define assert(condition, msg)`
 
 **Penjelasan**: Makro ini memeriksa kondisi dan jika tidak terpenuhi, akan melempar error menggunakan `throwError`.
 
@@ -186,7 +186,7 @@ Assertion failed: x must be greater than 10!
 
 ---
 
-### 1. `#define forEach(arr, func) for (auto& item : arr) { func(item); }`
+### 1. `#define forEach(arr, func)`
 
 **Penjelasan**: Makro ini menjalankan fungsi `func` untuk setiap elemen dalam array `arr`.
 
@@ -213,7 +213,7 @@ int main() {
 
 ---
 
-### 2. `#define map(arr, func) ({ std::vector<decltype(func(arr[0]))> _result; for (auto& item : arr) { _result.push_back(func(item)); } _result; })`
+### 2. `#define map(arr, func)`
 
 **Penjelasan**: Makro ini mengaplikasikan fungsi `func` pada setiap elemen dalam `arr` dan mengembalikan vector hasilnya.
 
@@ -241,7 +241,7 @@ int main() {
 
 ---
 
-### 3. `#define filter(arr, func) ({ std::vector<decltype(arr[0])> _result; for (auto& item : arr) { if (func(item)) _result.push_back(item); } _result; })`
+### 3. `#define filter(arr, func)`
 
 **Penjelasan**: Makro ini mengembalikan elemen dari `arr` yang memenuhi kondisi dalam `func`.
 
@@ -269,7 +269,7 @@ int main() {
 
 ---
 
-### 4. `#define reduce(arr, func, initial) ({ auto _acc = initial; for (auto& item : arr) { _acc = func(_acc, item); } _acc; })`
+### 4. `#define reduce(arr, func, initial)`
 
 **Penjelasan**: Makro ini mengakumulasi nilai dari `arr` menggunakan fungsi `func` dan nilai awal `initial`.
 
@@ -297,7 +297,7 @@ int main() {
 
 ---
 
-### 5. `#define some(arr, func) (std::any_of(arr.begin(), arr.end(), func))`
+### 5. `#define some(arr, func)`
 
 **Penjelasan**: Makro ini mengembalikan true jika ada setidaknya satu elemen dalam `arr` yang memenuhi `func`.
 
@@ -326,7 +326,7 @@ Has even number
 
 ---
 
-### 6. `#define every(arr, func) (std::all_of(arr.begin(), arr.end(), func))`
+### 6. `#define every(arr, func)`
 
 **Penjelasan**: Makro ini mengembalikan true jika semua elemen dalam `arr` memenuhi `func`.
 
@@ -355,7 +355,7 @@ All are even
 
 ---
 
-### 7. `#define includes(arr, value) (std::find(arr.begin(), arr.end(), value) != arr.end())`
+### 7. `#define includes(arr, value)`
 
 **Penjelasan**: Makro ini memeriksa apakah `value` ada dalam `arr`.
 
@@ -384,7 +384,7 @@ Found 3
 
 ---
 
-### 8. `#define concat(arr1, arr2) (arr1.insert(arr1.end(), arr2.begin(), arr2.end()))`
+### 8. `#define concat(arr1, arr2)`
 
 **Penjelasan**: Makro ini menggabungkan dua array `arr1` dan `arr2`.
 
@@ -413,7 +413,7 @@ int main() {
 
 ---
 
-### 9. `#define slice(arr, start, end) (std::vector<decltype(arr[0])>(arr.begin() + start, arr.begin() + end))`
+### 9. `#define slice(arr, start, end)`
 
 **Penjelasan**: Makro ini mengambil irisan dari `arr` dari indeks `start` hingga `end`.
 
@@ -441,7 +441,7 @@ int main() {
 
 ---
 
-### 10. `#define indexOf(arr, value) (std::find(arr.begin(), arr.end(), value) - arr.begin())`
+### 10. `#define indexOf(arr, value)`
 
 **Penjelasan**: Makro ini mengembalikan indeks dari `value` dalam `arr`, atau `arr.size()` jika tidak ditemukan.
 
@@ -472,7 +472,7 @@ Index of 3: 2
 
 ---
 
-### 11. `#define find(arr, func) ({ auto it = std::find_if(arr.begin(), arr.end(), func); (it != arr.end() ? *it : -1); })`
+### 11. `#define find(arr, func)`
 
 **Penjelasan**: Makro ini mencari elemen dalam `arr` yang memenuhi fungsi `func`, mengembalikan elemen tersebut atau `-1` jika tidak ditemukan.
 
@@ -501,7 +501,7 @@ First number greater than 3: 4
 
 ---
 
-### 12. `#define fill(arr, value) (std::fill(arr.begin(), arr.end(), value))`
+### 12. `#define fill(arr, value)`
 
 **Penjelasan**: Makro ini mengisi semua elemen dalam `arr` dengan `value`.
 
@@ -530,7 +530,7 @@ int main() {
 
 ---
 
-### 13. `#define reverse(arr) (std::reverse(arr.begin(), arr.end()))`
+### 13. `#define reverse(arr)`
 
 **Penjelasan**: Makro ini membalik urutan elemen dalam `arr`.
 
@@ -559,7 +559,7 @@ int main() {
 
 ---
 
-### 14. `#define sortAsc(arr) (std::sort(arr.begin(), arr.end()))`
+### 14. `#define sortAsc(arr)`
 
 **Penjelasan**: Makro ini mengurutkan elemen dalam `arr` secara ascending.
 
@@ -588,7 +588,7 @@ int main() {
 
 ---
 
-### 15. `#define sortDesc(arr) (std::sort(arr.rbegin(), arr.rend()))`
+### 15. `#define sortDesc(arr)`
 
 **Penjelasan**: Makro ini mengurutkan elemen dalam `arr` secara descending.
 
@@ -617,7 +617,7 @@ int main() {
 
 ---
 
-### 16. `#define unique(arr) ({ std::sort(arr.begin(), arr.end()); arr.erase(std::unique(arr.begin(), arr.end()), arr.end()); })`
+### 16. `#define unique(arr)`
 
 **Penjelasan**: Makro ini menghapus elemen duplikat dalam `arr`.
 
@@ -646,7 +646,7 @@ int main() {
 
 ---
 
-### 17. `#define push(arr, value) (arr.push_back(value))`
+### 17. `#define push(arr, value)`
 
 **Penjelasan**: Makro ini menambahkan `value` ke akhir `arr`.
 
@@ -676,7 +676,7 @@ int main() {
 
 ---
 
-### 18. `#define pop(arr) (arr.pop_back())`
+### 18. `#define pop(arr)`
 
 **Penjelasan**: Makro ini menghapus elemen terakhir dari `arr`.
 
@@ -704,7 +704,7 @@ int main() {
 
 ---
 
-### 19. `#define shift(arr) (arr.erase(arr.begin()))`
+### 19. `#define shift(arr)`
 
 **Penjelasan**: Makro ini menghapus elemen pertama dari `arr`.
 
@@ -732,7 +732,7 @@ int main() {
 
 ---
 
-### 20. `#define unshift(arr, value) (arr.insert(arr.begin(), value))`
+### 20. `#define unshift(arr, value)`
 
 **Penjelasan**: Makro ini menambahkan `value` ke awal `arr`.
 
@@ -762,7 +762,7 @@ int main() {
 
 Berikut adalah penjelasan dan contoh penggunaan untuk setiap makro string yang Anda sebutkan:
 
-### 1. `#define startsWith(str, prefix) (str.rfind(prefix, 0) == 0)`
+### 1. `#define startsWith(str, prefix)`
 
 **Penjelasan**: Makro ini memeriksa apakah string `str` dimulai dengan `prefix`.
 
@@ -789,7 +789,7 @@ Yes
 
 ---
 
-### 2. `#define endsWith(str, suffix) (str.size() >= suffix.size() && 0 == str.compare(str.size()-suffix.size(), suffix.size(), suffix))`
+### 2. `#define endsWith(str, suffix)`
 
 **Penjelasan**: Makro ini memeriksa apakah string `str` diakhiri dengan `suffix`.
 
@@ -816,7 +816,7 @@ Yes
 
 ---
 
-### 3. `#define toUpperCase(str) (std::transform(str.begin(), str.end(), str.begin(), ::toupper))`
+### 3. `#define toUpperCase(str)`
 
 **Penjelasan**: Makro ini mengubah semua karakter dalam `str` menjadi huruf besar.
 
@@ -845,7 +845,7 @@ HELLO, WORLD!
 
 ---
 
-### 4. `#define toLowerCase(str) (std::transform(str.begin(), str.end(), str.begin(), ::tolower))`
+### 4. `#define toLowerCase(str)`
 
 **Penjelasan**: Makro ini mengubah semua karakter dalam `str` menjadi huruf kecil.
 
@@ -874,7 +874,7 @@ hello, world!
 
 ---
 
-### 5. `#define split(str, delimiter) ({ std::vector<std::string> _result; std::string token; std::istringstream tokenStream(str); while (std::getline(tokenStream, token, delimiter)) { _result.push_back(token); } _result; })`
+### 5. `#define split(str, delimiter)`
 
 **Penjelasan**: Makro ini membagi string `str` menjadi vektor berdasarkan `delimiter`.
 
@@ -907,7 +907,7 @@ world!
 
 ---
 
-### 6. `#define join(arr, delimiter) ({ std::ostringstream os; for (int i = 0; i < arr.size(); ++i) { if (i) os << delimiter; os << arr[i]; } os.str(); })`
+### 6. `#define join(arr, delimiter)`
 
 **Penjelasan**: Makro ini menggabungkan elemen dari vektor `arr` menjadi satu string yang dipisahkan oleh `delimiter`.
 
@@ -936,7 +936,7 @@ Hello world!
 
 ---
 
-### 7. `#define repeat(str, n) ({ std::string _result; for (int i = 0; i < n; ++i) _result += str; _result; })`
+### 7. `#define repeat(str, n)`
 
 **Penjelasan**: Makro ini mengulang string `str` sebanyak `n` kali.
 
@@ -963,7 +963,7 @@ Hello! Hello! Hello!
 
 ---
 
-### 8. `#define trim(str) ({ auto start = str.find_first_not_of(' '); auto end = str.find_last_not_of(' '); str.substr(start, end - start + 1); })`
+### 8. `#define trim(str)`
 
 **Penjelasan**: Makro ini menghapus spasi di awal dan akhir string `str`.
 
@@ -991,7 +991,7 @@ Hello, world!
 
 ---
 
-### 9. `#define replace(str, from, to) ({ size_t start_pos = str.find(from); if(start_pos != std::string::npos) str.replace(start_pos, from.length(), to); str; })`
+### 9. `#define replace(str, from, to)`
 
 **Penjelasan**: Makro ini mengganti substring `from` dengan `to` dalam string `str`.
 
@@ -1019,7 +1019,7 @@ Hello, C++!
 
 ---
 
-### 10. `#define substring(str, start, len) (str.substr(start, len))`
+### 10. `#define substring(str, start, len)`
 
 **Penjelasan**: Makro ini mengembalikan substring dari `str` mulai dari `start` dengan panjang `len`.
 
@@ -1047,7 +1047,7 @@ world
 
 ---
 
-### 11. `#define length(str) (str.length())`
+### 11. `#define length(str)`
 
 **Penjelasan**: Makro ini mengembalikan panjang string `str`.
 
@@ -1076,7 +1076,7 @@ Length: 13
 
 Berikut adalah penjelasan dan contoh penggunaan untuk setiap makro yang Anda sebutkan:
 
-### 1. `#define max(a, b) (a > b ? a : b)`
+### 1. `#define max(a, b)`
 
 **Penjelasan**: Makro ini mengembalikan nilai maksimum antara `a` dan `b`.
 
@@ -1102,7 +1102,7 @@ Max: 10
 
 ---
 
-### 2. `#define min(a, b) (a < b ? a : b)`
+### 2. `#define min(a, b)`
 
 **Penjelasan**: Makro ini mengembalikan nilai minimum antara `a` dan `b`.
 
@@ -1128,7 +1128,7 @@ Min: 5
 
 ---
 
-### 3. `#define pow(base, exp) (std::pow(base, exp))`
+### 3. `#define pow(base, exp)`
 
 **Penjelasan**: Makro ini menghitung pangkat dari `base` yang dipangkatkan dengan `exp`.
 
@@ -1155,7 +1155,7 @@ Power: 8
 
 ---
 
-### 4. `#define sqrt(n) (std::sqrt(n))`
+### 4. `#define sqrt(n)`
 
 **Penjelasan**: Makro ini menghitung akar kuadrat dari `n`.
 
@@ -1182,7 +1182,7 @@ Square Root: 4
 
 ---
 
-### 5. `#define abs(n) (std::abs(n))`
+### 5. `#define abs(n)`
 
 **Penjelasan**: Makro ini mengembalikan nilai absolut dari `n`.
 
@@ -1209,7 +1209,7 @@ Absolute: 10
 
 ---
 
-### 6. `#define ceil(n) (std::ceil(n))`
+### 6. `#define ceil(n)`
 
 **Penjelasan**: Makro ini membulatkan `n` ke atas ke bilangan bulat terdekat.
 
@@ -1236,7 +1236,7 @@ Ceiling: 5
 
 ---
 
-### 7. `#define floor(n) (std::floor(n))`
+### 7. `#define floor(n)`
 
 **Penjelasan**: Makro ini membulatkan `n` ke bawah ke bilangan bulat terdekat.
 
@@ -1263,7 +1263,7 @@ Floor: 4
 
 ---
 
-### 8. `#define round(n) (std::round(n))`
+### 8. `#define round(n)`
 
 **Penjelasan**: Makro ini membulatkan `n` ke bilangan bulat terdekat.
 
@@ -1290,7 +1290,7 @@ Rounded: 5
 
 ---
 
-### 9. `#define random(min, max) (min + rand() % (max - min + 1))`
+### 9. `#define random(min, max)`
 
 **Penjelasan**: Makro ini menghasilkan bilangan acak antara `min` dan `max`.
 
@@ -1320,7 +1320,7 @@ _(Output akan berbeda setiap kali dijalankan.)_
 
 ---
 
-### 10. `#define clamp(n, minVal, maxVal) (std::max(minVal, std::min(n, maxVal)))`
+### 10. `#define clamp(n, minVal, maxVal)`
 
 **Penjelasan**: Makro ini membatasi nilai `n` agar tidak kurang dari `minVal` dan tidak lebih dari `maxVal`.
 
@@ -1347,7 +1347,7 @@ Clamped: 5
 
 ---
 
-### 11. `#define gcd(a, b) (std::gcd(a, b))`
+### 11. `#define gcd(a, b)`
 
 **Penjelasan**: Makro ini menghitung pembagi terbesar (GCD) dari dua bilangan `a` dan `b`.
 
@@ -1374,7 +1374,7 @@ GCD: 12
 
 ---
 
-### 12. `#define lcm(a, b) ((a * b) / gcd(a, b))`
+### 12. `#define lcm(a, b)`
 
 **Penjelasan**: Makro ini menghitung kelipatan persekutuan terkecil (LCM) dari dua bilangan `a` dan `b` menggunakan GCD.
 
@@ -1406,7 +1406,7 @@ Berikut adalah penjelasan dan contoh penggunaan untuk makro bitwise dan makro ut
 
 ### Makro Bitwise
 
-#### 1. `#define andBits(x, y) (x & y)`
+#### 1. `#define andBits(x, y)`
 
 **Penjelasan**: Mengembalikan hasil operasi AND bitwise antara `x` dan `y`.
 
@@ -1433,7 +1433,7 @@ AND: 1
 
 ---
 
-#### 2. `#define orBits(x, y) (x | y)`
+#### 2. `#define orBits(x, y)`
 
 **Penjelasan**: Mengembalikan hasil operasi OR bitwise antara `x` dan `y`.
 
@@ -1460,7 +1460,7 @@ OR: 7
 
 ---
 
-#### 3. `#define xorBits(x, y) (x ^ y)`
+#### 3. `#define xorBits(x, y)`
 
 **Penjelasan**: Mengembalikan hasil operasi XOR bitwise antara `x` dan `y`.
 
@@ -1487,7 +1487,7 @@ XOR: 6
 
 ---
 
-#### 4. `#define notBits(x) (~x)`
+#### 4. `#define notBits(x)`
 
 **Penjelasan**: Mengembalikan hasil operasi NOT bitwise dari `x`.
 
@@ -1513,7 +1513,7 @@ NOT: -6
 
 ---
 
-#### 5. `#define shiftLeft(x, n) (x << n)`
+#### 5. `#define shiftLeft(x, n)`
 
 **Penjelasan**: Menggeser bit dari `x` ke kiri sebanyak `n` posisi.
 
@@ -1539,7 +1539,7 @@ Shift Left: 10
 
 ---
 
-#### 6. `#define shiftRight(x, n) (x >> n)`
+#### 6. `#define shiftRight(x, n)`
 
 **Penjelasan**: Menggeser bit dari `x` ke kanan sebanyak `n` posisi.
 
@@ -1567,7 +1567,7 @@ Shift Right: 2
 
 ### Utilitas Set dan Map
 
-#### 7. `#define setAdd(s, val) (s.insert(val))`
+#### 7. `#define setAdd(s, val)`
 
 **Penjelasan**: Menambahkan `val` ke dalam set `s`.
 
@@ -1595,7 +1595,7 @@ Set Size: 1
 
 ---
 
-#### 8. `#define setDelete(s, val) (s.erase(val))`
+#### 8. `#define setDelete(s, val)`
 
 **Penjelasan**: Menghapus `val` dari set `s`.
 
@@ -1623,7 +1623,7 @@ Set Size: 2
 
 ---
 
-#### 9. `#define setHas(s, val) (s.find(val) != s.end())`
+#### 9. `#define setHas(s, val)`
 
 **Penjelasan**: Memeriksa apakah `val` ada di dalam set `s`.
 
@@ -1650,7 +1650,7 @@ Has 2: Yes
 
 ---
 
-#### 10. `#define setSize(s) (s.size())`
+#### 10. `#define setSize(s)`
 
 **Penjelasan**: Mengembalikan ukuran dari set `s`.
 
@@ -1677,7 +1677,7 @@ Set Size: 3
 
 ---
 
-#### 11. `#define mapSet(m, key, value) (m[key] = value)`
+#### 11. `#define mapSet(m, key, value)`
 
 **Penjelasan**: Menetapkan `value` ke `key` dalam map `m`.
 
@@ -1705,7 +1705,7 @@ Map[1]: One
 
 ---
 
-#### 12. `#define mapGet(m, key) (m[key])`
+#### 12. `#define mapGet(m, key)`
 
 **Penjelasan**: Mengembalikan nilai yang terkait dengan `key` dalam map `m`.
 
@@ -1732,7 +1732,7 @@ Map[1]: One
 
 ---
 
-#### 13. `#define mapHas(m, key) (m.find(key) != m.end())`
+#### 13. `#define mapHas(m, key)`
 
 **Penjelasan**: Memeriksa apakah `key` ada dalam map `m`.
 
@@ -1759,7 +1759,7 @@ Has Key 1: Yes
 
 ---
 
-#### 14. `#define mapDelete(m, key) (m.erase(key))`
+#### 14. `#define mapDelete(m, key)`
 
 **Penjelasan**: Menghapus `key` dari map `m`.
 
@@ -1789,7 +1789,7 @@ Has Key 1: No
 
 ---
 
-#### 15. `#define mapSize(m) (m.size())`
+#### 15. `#define mapSize(m)`
 
 **Penjelasan**: Mengembalikan ukuran dari map `m`.
 
@@ -1820,7 +1820,7 @@ Berikut adalah penjelasan dan contoh penggunaan untuk makro yang berkaitan denga
 
 ### Makro Waktu dan Tidur
 
-#### 1. `#define now() (std::chrono::system_clock::now())`
+#### 1. `#define now()`
 
 **Penjelasan**: Mengembalikan waktu saat ini dalam bentuk `std::chrono::time_point`.
 
@@ -1849,7 +1849,7 @@ Current Time: X seconds since epoch.
 
 ---
 
-#### 2. `#define sleep(ms) (std::this_thread::sleep_for(std::chrono::milliseconds(ms)))`
+#### 2. `#define sleep(ms)`
 
 **Penjelasan**: Menangguhkan eksekusi thread saat ini selama `ms` milidetik.
 
@@ -1878,7 +1878,7 @@ Awake!
 
 ---
 
-#### 3. `#define duration(start, end) (std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count())`
+#### 3. `#define duration(start, end)`
 
 **Penjelasan**: Menghitung durasi dalam milidetik antara dua titik waktu `start` dan `end`.
 
@@ -1911,7 +1911,7 @@ Duration: 1000 ms
 
 ### Algoritma Pengurutan dan Pencarian
 
-#### 4. `#define binarySearch(arr, value) (std::binary_search(arr.begin(), arr.end(), value))`
+#### 4. `#define binarySearch(arr, value)`
 
 **Penjelasan**: Mengembalikan `true` jika `value` ditemukan dalam `arr` menggunakan pencarian biner.
 
@@ -1939,7 +1939,7 @@ Value 3 found: Yes
 
 ---
 
-#### 5. `#define lowerBound(arr, value) (std::lower_bound(arr.begin(), arr.end(), value) - arr.begin())`
+#### 5. `#define lowerBound(arr, value)`
 
 **Penjelasan**: Mengembalikan indeks pertama dari elemen yang tidak kurang dari `value`.
 
@@ -1967,7 +1967,7 @@ Lower bound of 3: 2
 
 ---
 
-#### 6. `#define upperBound(arr, value) (std::upper_bound(arr.begin(), arr.end(), value) - arr.begin())`
+#### 6. `#define upperBound(arr, value)`
 
 **Penjelasan**: Mengembalikan indeks pertama dari elemen yang lebih besar dari `value`.
 
@@ -1995,7 +1995,7 @@ Upper bound of 3: 3
 
 ---
 
-#### 7. `#define nextPermutation(arr) (std::next_permutation(arr.begin(), arr.end()))`
+#### 7. `#define nextPermutation(arr)`
 
 **Penjelasan**: Menghasilkan urutan berikutnya dari `arr` dalam urutan leksikografis.
 
@@ -2026,7 +2026,7 @@ Next permutation: 1 3 2
 
 ---
 
-#### 8. `#define prevPermutation(arr) (std::prev_permutation(arr.begin(), arr.end()))`
+#### 8. `#define prevPermutation(arr)`
 
 **Penjelasan**: Menghasilkan urutan sebelumnya dari `arr` dalam urutan leksikografis.
 
@@ -2061,7 +2061,7 @@ Berikut adalah penjelasan yang lebih mendetail untuk setiap makro yang diberikan
 
 ### 1. **Graph Operations**
 
-#### 1.1. `#define addEdge(adj, u, v) (adj[u].push_back(v))`
+#### 1.1. `#define addEdge(adj, u, v)`
 
 **Penjelasan**: Makro ini menambahkan tepi (edge) dari simpul `u` ke simpul `v` dalam graf yang direpresentasikan sebagai daftar ketetanggaan.
 
@@ -2097,7 +2097,7 @@ int main() {
 
 ---
 
-#### 1.2. `#define addEdgeWeighted(adj, u, v, w) (adj[u].push_back({v, w}))`
+#### 1.2. `#define addEdgeWeighted(adj, u, v, w)`
 
 **Penjelasan**: Makro ini menambahkan tepi berbobot dari simpul `u` ke simpul `v` dengan bobot `w`.
 
@@ -2136,7 +2136,7 @@ int main() {
 
 ### 2. **Graph Traversal**
 
-#### 2.1. `#define dfs(adj, v, visited, func) ({ visited[v] = true; func(v); for (auto& u : adj[v]) if (!visited[u]) dfs(adj, u, visited, func); })`
+#### 2.1. `#define dfs(adj, v, visited, func)`
 
 **Penjelasan**: Makro ini melakukan traversing graf menggunakan DFS (Depth-First Search) mulai dari simpul `v`.
 
@@ -2182,7 +2182,7 @@ int main() {
 
 ---
 
-#### 2.2. `#define bfs(adj, v, func) ({ std::queue<int> q; std::vector<bool> visited(adj.size(), false); q.push(v); visited[v] = true; while (!q.empty()) { int u = q.front(); q.pop(); func(u); for (auto& w : adj[u]) if (!visited[w]) { q.push(w); visited[w] = true; } } })`
+#### 2.2. `#define bfs(adj, v, func)`
 
 **Penjelasan**: Makro ini melakukan traversing graf menggunakan BFS (Breadth-First Search) mulai dari simpul `v`.
 
@@ -2230,7 +2230,7 @@ int main() {
 
 ### 3. **Shortest Path Algorithm**
 
-#### 3.1. `#define dijkstra(adj, src, dist) ({ std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>, std::greater<std::pair<int, int>>> pq; pq.push({0, src}); dist[src] = 0; while (!pq.empty()) { int u = pq.top().second; pq.pop(); for (auto& [v, weight] : adj[u]) { if (dist[u] + weight < dist[v]) { dist[v] = dist[u] + weight; pq.push({dist[v], v}); } } } })`
+#### 3.1. `#define dijkstra(adj, src, dist)`
 
 **Penjelasan**: Makro ini mengimplementasikan algoritma Dijkstra untuk menemukan jarak terpendek dari sumber `src` ke semua simpul dalam graf berbobot.
 
@@ -2327,7 +2327,7 @@ Tentu! Mari kita bahas lebih dalam mengenai istilah-istilah yang muncul dalam al
 
 ### 4. **Miscellaneous Functions**
 
-#### 4.1. `#define isEven(n) (n % 2 == 0)`
+#### 4.1. `#define isEven(n)`
 
 **Penjelasan**: Makro ini memeriksa apakah angka `n` adalah genap.
 
@@ -2355,7 +2355,7 @@ int main() {
 
 ---
 
-#### 4.2. `#define isOdd(n) (n % 2 != 0)`
+#### 4.2. `#define isOdd(n)`
 
 **Penjelasan**: Makro ini memeriksa apakah angka `n` adalah ganjil.
 
@@ -2383,7 +2383,7 @@ int main() {
 
 ---
 
-#### 4.3. `#define swap(a, b) (std::swap(a, b))`
+#### 4.3. `#define swap(a, b)`
 
 **Penjelasan**: Makro ini menukar nilai dua variabel `a` dan `b`.
 
@@ -2410,7 +2410,7 @@ int main() {
 
 ---
 
-#### 4.4. `#define repeat(n, func) for (int i = 0; i < n; i++) func()`
+#### 4.4. `#define repeat(n, func)`
 
 **Penjelasan**: Makro ini mengulangi pemanggilan fungsi `func` sebanyak `n` kali.
 
@@ -2437,7 +2437,7 @@ int main() {
 
 ---
 
-#### 4.5. `#define range(start, end) (std::vector<int>(std::iota(start, end)))`
+#### 4.5. `#define range(start, end)`
 
 **Penjelasan**: Makro ini menghasilkan vektor yang berisi bilangan bulat dari `start` hingga `end`.
 
@@ -2469,7 +2469,7 @@ int main() {
 
 ---
 
-#### 4.6. `#define print(arr) (for (auto& item : arr) std::cout << item << ' '; std::cout << std::endl)`
+#### 4.6. `#define print(arr)`
 
 **Penjelasan**: Makro ini mencetak elemen dalam array atau vector.
 
